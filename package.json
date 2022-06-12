@@ -9,6 +9,8 @@
   "author": "Jared Parker",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^6.3.6"
+    "bcrypt": "^5.0.1",
+    "mongoose": "^6.3.6",
+    "url-slug": "^3.0.4"
   }
 }
