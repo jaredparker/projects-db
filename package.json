@@ -1,0 +1,14 @@
+{
+  "name": "projects-db",
+  "version": "1.0.0",
+  "description": "Shared db models for my portfolio site.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jared Parker",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.3.6"
+  }
+}
