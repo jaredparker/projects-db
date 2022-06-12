@@ -1,6 +1,13 @@
 
+const { connect } = require('mongoose');
+
 const Project = require('./models/project.js');
 
-export default {
-    Project
+module.exports = {
+
+    models: {
+        Project
+    },
+
+    connect
 }
