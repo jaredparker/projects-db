@@ -5,11 +5,15 @@ const urlSlug  = require('url-slug');
 
 const { visibilities, storage_hosts } = require('../lib/enums.js');
 
+const { environmentSchema, addEnvironmentDiscriminators } = require('./environments/index.js');
+
 const projectSchema = new mongoose.Schema({
 
     // Used to access project (e.g my-first-project)
     id: {
-        type: String
+        type: String,
+        unique: true,
+        lowercase: true
     },
 
     // # Viewing Details (used to show content to the user) #
@@ -58,8 +62,12 @@ const projectSchema = new mongoose.Schema({
         }
     },
 
-    enviroment: {
-        type: mongoose.Schema.Types.Mixed,
+    environment: {
+        type: environmentSchema,
+        default: {
+            kind: 'static-web'
+        },
+        required: true
     },
 
     timeouts: {
@@ -80,6 +88,8 @@ const projectSchema = new mongoose.Schema({
     }
 
 });
+
+addEnvironmentDiscriminators( projectSchema, 'environment' );
 
 // Generate ID if not provided
 projectSchema.pre('save', async function( next ){
